@@ -1,0 +1,31 @@
+---
+- name: hostname of the box
+  shell: hostname
+
+- name: Copy main
+  copy:
+    src: ../main
+    dest: /tmp
+    mode: 0644
+  become: yes
+
+- name: Docker Build
+  shell: |
+      cd /tmp/main
+      docker build  -t url-short:latest .
+  args:
+   executable: /bin/bash
+
+# - name: Docker Push
+#   shell: |
+#       docker tag  url-short:latest <ECR>/url-short:latest
+#       docker push <ECR>/url-short:latest
+#   args:
+#    executable: /bin/bash
+
+- name: Docker Compose up
+  shell: |
+      cd /tmp/main
+      docker-compose -d up 
+  args:
+   executable: /bin/bash

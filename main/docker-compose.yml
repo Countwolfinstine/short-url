@@ -1,0 +1,20 @@
+version: "2.2"
+services:
+
+  mongo-short-url:
+    container_name: mongo-short-url
+    image: mongo:4.2-bionic
+    expose:
+      - "27017"
+    ports:
+      - "27017:27017"    
+  
+  url-short:
+    image: url-short
+    container_name: url-short
+    expose:
+      - "8000"
+    ports:
+      - "8000:8000"
+    environment:
+      - MONGO_URL=mongo-short-url:27017
