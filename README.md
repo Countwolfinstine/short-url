@@ -1,5 +1,4 @@
 # short-url
----------------	
 
 Simple app to create short URLs.
 The App is written in python and uses MongoDb as data store.
@@ -7,7 +6,6 @@ The App is written in python and uses MongoDb as data store.
 
 
 ## Local Testing Setup using Docker Compose
----------------	
 
 1. Clone the Repository. 
 2. Install all the python packages. 
@@ -24,7 +22,6 @@ The App is written in python and uses MongoDb as data store.
     `docker-compose up -d`
 
 ## Local development Setup with flask run
----------------	
 
  By default the docker compose uses waitress to run the app. This is not suitable for development and testing of apis. To enable hot reload follow these steps
 
@@ -46,10 +43,9 @@ The App is written in python and uses MongoDb as data store.
 
 
 ## Testing
----------------	
 After the local setup is done. We can use the following apis to test
 ```
-curl -i  localhost:8000/shorten -H "content-type: application/json" --data '{"url":"https://google.com"}'
+$ curl -i  localhost:8000/shorten -H "content-type: application/json" --data '{"url":"https://google.com"}'
 
 HTTP/1.1 200 OK
 Content-Length: 19
@@ -64,7 +60,7 @@ Shortened: r/99999
 Now that we have got the shortened url we test redirection by using the following curl 
 
 ```
-curl -i localhost:8000/r/99999
+$ curl -i localhost:8000/r/99999
 
 HTTP/1.1 302 FOUND
 Content-Length: 243
@@ -102,13 +98,11 @@ mappings
 ```
 
 ## Deployment 
----------------	
 
 Ansible playbook in the deployment folder can be used to do the entire prod like setup on a single machine. The APP will be running on port 8000.
 
 
 ### Helm Chart
----------------	
 
 
 There is also a helm chart for the application. Following command can be used to create the kubernetes yaml.
