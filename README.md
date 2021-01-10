@@ -1,4 +1,4 @@
-# short-url
+# short-url Application
 
 Simple app to create short URLs.
 The App is written in python and uses MongoDb as data store.
