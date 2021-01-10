@@ -1,0 +1,22 @@
+apiVersion: apps/v1 
+kind: Deployment
+metadata:
+  name: mongo-deployment
+spec:
+  selector:
+    matchLabels:
+      app: short-url-mongo
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: short-url-mongo
+    spec:
+      containers:
+      - name: short-url-mongo
+        image: mongo:4.2-bionic
+        env:
+        - name: MONGO_URL
+          value: {{ .Values.shortURLImage }}
+        ports:
+        - containerPort: 8000

@@ -1,0 +1,17 @@
+{{- $ingress := .Values.ingress -}}
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: short-url-ingress
+  namespace: {{ .Values.namespace }}
+  labels:
+    app: short-url
+spec:
+  rules:
+  - host: {{ .Values.hostname }}
+    http:
+      paths:
+      - backend:
+          serviceName: short-url-svc
+          servicePort: 80
+        path: /

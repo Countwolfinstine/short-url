@@ -26,6 +26,6 @@
 - name: Docker Compose up
   shell: |
       cd /tmp/main
-      docker-compose -d up 
+       docker-compose up -d
   args:
    executable: /bin/bash
